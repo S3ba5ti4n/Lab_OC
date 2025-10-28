@@ -94,13 +94,13 @@ _start:
 
     loop .loop_asteriscos  ; Decrementa CX, salta si CX != 0
 
-    pop ecx             ; Restaurar el tamaño maximo (n)
-    ; Imprimir nueva linea
+    pop ecx             ; Restaurar el tamano minimo 
+    
     mov al, byte [nueva_linea]
     call putc
 
-    inc ebx             ; i++ (Siguiente fila)
-    jmp .loop_filas     ; Repetir para la siguiente fila
+    inc ebx             ; i++ 
+    jmp .loop_filas     ; Repetir para la sig fila
 
 .secuencia_d:
     ; d) Capturar 10 caracteres y presentarlos en formato columna
@@ -115,12 +115,12 @@ _start:
     call getche         ; AL = caracter capturado
 
     ; Almacenar en el arreglo
-    mov [edi], al       ; Almacena el caracter en el byte apuntado por EDI
-    inc edi             ; Mueve el puntero al siguiente byte
+    mov [edi], al        
+    inc edi             
 
-    loop .loop_captura  ; Decrementa ECX, salta si ECX != 0
+    loop .loop_captura  
 
-    ; Presentar mensaje "Datos capturados"
+    ; Datos capturados
     mov eax, msg_captura_datos
     call puts
 
@@ -137,11 +137,11 @@ _start:
     mov al, byte [nueva_linea]
     call putc
 
-    inc esi             ; Siguiente caracter en el arreglo
+    inc esi             
 
-    loop .loop_presentacion ; Decrementa ECX, salta si ECX != 0
+    loop .loop_presentacion 
 
-    ; ----------------------------------------------------
+    
     ; FIN del programa
-    ; ----------------------------------------------------
-    call exit           ; Llama a la funcion de salida del sistema (ej. sys_exit)
+    
+    call exit           
