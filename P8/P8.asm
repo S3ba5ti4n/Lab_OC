@@ -20,7 +20,7 @@ _start:
 
     ; Compara con '5'
     cmp al, '5'
-    jl  .es_menor_5     ; Saltar si AL < '5' (Jump Less)
+    jl  .es_menor_5     ; Saltar si AL < '5' 
 
     ;si no salta (AL >= '5')
     mov eax, msg_no_menor_5 mov eax,
@@ -73,7 +73,7 @@ _start:
 
 .secuencia_c: ; se lleva a cabo
     
-    ; c) Triangulo de asteriscos, tamaño dado por CX (0-10)
+    ; c) Triangulo de asteriscos, tamano dado por CX (0-10)
     
     
     mov cx, 5  
@@ -85,14 +85,14 @@ _start:
     jg .secuencia_d      
 
     push ecx            
-    mov ecx, ebx        ;cx se vuelve a guardar en ebx
+    mov ecx, ebx        
 
 .loop_asteriscos: 
     ; Imprimir un asterisco
     mov al, byte [asterisco]
     call putc
 
-    loop .loop_asteriscos  ; Decrementa CX, salta si CX != 0
+    loop .loop_asteriscos  
 
     pop ecx             ; Restaurar el tamano minimo 
     
@@ -105,14 +105,14 @@ _start:
 .secuencia_d:
     ; d) Capturar 10 caracteres y presentarlos en formato columna
     
-    mov ecx, 10         ; ECX = Contador de 10 iteraciones
+    mov ecx, 10         
 
     ; Puntero al inicio del arreglo de datos
     mov edi, buffer_datos
 
 .loop_captura:
     ; Capturar el caracter
-    call getche         ; AL = caracter capturado
+    call getche         
 
     ; Almacenar en el arreglo
     mov [edi], al        
@@ -125,8 +125,8 @@ _start:
     call puts
 
     ; Presentar los 10 caracteres en columna
-    mov ecx, 10         ; ECX = Contador de 10 iteraciones
-    mov esi, buffer_datos ; ESI = Puntero al inicio del arreglo
+    mov ecx, 10         
+    mov esi, buffer_datos 
 
 .loop_presentacion:
     ; Cargar el caracter desde el arreglo
