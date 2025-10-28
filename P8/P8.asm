@@ -54,9 +54,9 @@ _start:
     cmp al, 'Z'
     jle .es_letra           ; AL <= 'Z'
 
-
+  
 .fuera_de_rango: 
-    ; AL esta fuera de ambos rangos
+    ; AL fuera de amos rangos
     mov eax, msg_fuera_rango
     call puts
     jmp .secuencia_c
@@ -71,26 +71,23 @@ _start:
     call puts
     jmp .secuencia_c
 
-.secuencia_c:
+.secuencia_c: ; se lleva a cabo
     
     ; c) Triangulo de asteriscos, tamaño dado por CX (0-10)
     
-    ; ASUME que el valor inicial de CX (n) se establece fuera o antes de _start.
-    ; Por ejemplo, si se establece a 5: mov cx, 5
-    ; Usaremos EAX como contador para la fila, ECX (o CX) es el tamaño maximo
-    ; Si no se especifica, usaremos un valor de ejemplo para CX:
-    mov cx, 5  ; Ejemplo de tamaño de triangulo (cambiar segun necesidad)
+    
+    mov cx, 5  
 
-    mov ebx, 1          ; EBX = Contador de asteriscos por fila (i), empieza en 1
+    mov ebx, 1          ; EBX = Contador empieza en (1)
 
 .loop_filas:
-    cmp ebx, ecx        ; Comparar i con n (CX es el tamaño maximo)
-    jg .secuencia_d      ; Si i > n, se termino el triangulo (Jump Greater)
+    cmp ebx, ecx        
+    jg .secuencia_d      
 
-    push ecx            ; Guardar el tamaño maximo (n)
-    mov ecx, ebx        ; CX = i (numero de asteriscos a imprimir en esta fila)
+    push ecx            
+    mov ecx, ebx        ;cx se vuelve a guardar en ebx
 
-.loop_asteriscos:
+.loop_asteriscos: 
     ; Imprimir un asterisco
     mov al, byte [asterisco]
     call putc
@@ -107,7 +104,7 @@ _start:
 
 .secuencia_d:
     ; d) Capturar 10 caracteres y presentarlos en formato columna
-    ; ----------------------------------------------------
+    
     mov ecx, 10         ; ECX = Contador de 10 iteraciones
 
     ; Puntero al inicio del arreglo de datos
